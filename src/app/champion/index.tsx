@@ -1,7 +1,7 @@
+import React from "react";
+
 const Champion = () => {
-  return (
-    <>1</>;
-  )
+  return <></>;
 };
 
 export default Champion;

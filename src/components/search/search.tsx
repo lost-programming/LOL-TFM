@@ -1,7 +1,7 @@
 import React from "react";
 
-const Ranking = () => {
+const Search = () => {
   return <></>;
 };
 
-export default Ranking;
+export default Search;

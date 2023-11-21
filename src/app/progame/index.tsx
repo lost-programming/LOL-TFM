@@ -1,7 +1,7 @@
+import React from "react";
+
 const Progame = () => {
-  return (
-    <>1</>;
-  )
+  return <></>;
 };
 
 export default Progame;

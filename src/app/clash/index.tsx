@@ -1,7 +1,7 @@
+import React from "react";
+
 const Clash = () => {
-  return (
-    <>1</>;
-  )
+  return <></>;
 };
 
 export default Clash;
