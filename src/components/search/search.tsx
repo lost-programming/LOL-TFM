@@ -2,6 +2,7 @@
 
 import React from "react";
 import { InputBase, Paper, styled } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 interface SearchProps {
   placeholder: string;
@@ -17,6 +18,10 @@ const SearchInput = styled(InputBase)({
   padding: 7,
 });
 
+const CustomSearchIcon = styled(SearchIcon)({
+  marginRight: 10,
+});
+
 const Search = ({ placeholder }: SearchProps) => {
   return (
     <SearchContainer>
@@ -25,7 +30,8 @@ const Search = ({ placeholder }: SearchProps) => {
         autoFocus={true}
         placeholder={placeholder}
         type="search"
-      ></SearchInput>
+      />
+      <CustomSearchIcon />
     </SearchContainer>
   );
 };
