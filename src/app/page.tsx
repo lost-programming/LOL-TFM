@@ -1,8 +1,11 @@
 "use client";
 
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { searchText } from "@/recoil/atom";
 import Search from "@/components/search/search";
 import { styled } from "@mui/material";
-import React from "react";
 
 const MainContainer = styled("div")({
   display: "flex",
@@ -11,9 +14,35 @@ const MainContainer = styled("div")({
 });
 
 const Home = () => {
+  const router = useRouter();
+
+  const [text, setText] = useRecoilState(searchText);
+
+  const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
+  const searchEnter = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      router.push(`/champion/${text}`);
+      setText("");
+    }
+  };
+
+  const searchClick = () => {
+    router.push(`/champion/${text}`);
+    setText("");
+  };
+
   return (
     <MainContainer>
-      <Search placeholder="챔피언 검색" />
+      <Search
+        placeholder="챔피언 검색"
+        text={text}
+        onChange={textChange}
+        onKeyDown={searchEnter}
+        onClick={searchClick}
+      />
     </MainContainer>
   );
 };

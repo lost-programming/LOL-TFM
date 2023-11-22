@@ -3,12 +3,13 @@
 import React from "react";
 import { InputBase, Paper, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useRecoilState } from "recoil";
-import { searchText } from "@/recoil/atom";
-import { useRouter } from "next/navigation";
 
 interface SearchProps {
   placeholder: string;
+  text: string;
+  onChange: React.ChangeEvent;
+  onKeyDown: React.KeyboardEvent;
+  onClick: React.MouseEvent;
 }
 
 const SearchContainer = styled(Paper)({
@@ -24,23 +25,16 @@ const SearchInput = styled(InputBase)({
 
 const CustomSearchIcon = styled(SearchIcon)({
   marginRight: 10,
+  cursor: "pointer",
 });
 
-const Search = ({ placeholder }: SearchProps) => {
-  const router = useRouter();
-
-  const [text, setText] = useRecoilState(searchText);
-
-  const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-  };
-
-  const searchEnter = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      router.push(`/champion/${text}`);
-    }
-  };
-
+const Search = ({
+  placeholder,
+  text,
+  onChange,
+  onKeyDown,
+  onClick,
+}: SearchProps) => {
   return (
     <SearchContainer>
       <SearchInput
@@ -48,11 +42,11 @@ const Search = ({ placeholder }: SearchProps) => {
         placeholder={placeholder}
         type="search"
         value={text}
-        onChange={textChange}
-        onKeyDown={searchEnter}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
         sx={{ ml: 1, flex: 1 }}
       />
-      <CustomSearchIcon />
+      <CustomSearchIcon onClick={onClick} />
     </SearchContainer>
   );
 };
