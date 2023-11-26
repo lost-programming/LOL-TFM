@@ -7,9 +7,9 @@ import SearchIcon from "@mui/icons-material/Search";
 interface SearchProps {
   placeholder: string;
   text: string;
-  onChange: React.ChangeEvent;
-  onKeyDown: React.KeyboardEvent;
-  onClick: React.MouseEvent;
+  onChange: React.ChangeEventHandler;
+  onKeyDown: React.KeyboardEventHandler;
+  onClick: React.MouseEventHandler;
 }
 
 const SearchContainer = styled(Paper)({
