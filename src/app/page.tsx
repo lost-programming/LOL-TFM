@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
-import axios from "axios";
 import { searchText } from "@/recoil/atom";
 import Search from "@/components/search/search";
 import { styled } from "@mui/material";
@@ -18,22 +17,22 @@ const Home = () => {
   const router = useRouter();
 
   const [text, setText] = useRecoilState(searchText);
-  const [champData, setChampData] = useState(null);
+  // const [champData, setChampData] = useState(null);
 
-  useEffect(() => {
-    try {
-      const getChampData = async () => {
-        const res = await axios.get(
-          "https://ddragon.leagueoflegends.com/cdn/13.23.1/data/ko_KR/champion.json",
-        );
-        setChampData(res.data);
-        console.log(champData);
-      };
-      getChampData();
-    } catch (e) {
-      console.log(e);
-    }
-  }, [champData]);
+  // useEffect(() => {
+  //   try {
+  //     const getChampData = async () => {
+  //       const res = await axios.get(
+  //         "https://ddragon.leagueoflegends.com/cdn/13.23.1/data/ko_KR/champion.json",
+  //       );
+  //       setChampData(res.data);
+  //       console.log(champData);
+  //     };
+  //     getChampData();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [champData]);
 
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
