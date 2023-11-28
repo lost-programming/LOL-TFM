@@ -4,7 +4,7 @@ const latestPatchVersion = async () => {
   const res = await fetch(
     "https://ddragon.leagueoflegends.com/api/versions.json",
   );
-  return res.json()[0];
+  return Array(res.json())[0];
 };
 
 const getChampData = async () => {

@@ -4,22 +4,14 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { menuId } from "@/recoil/atom";
-import { styled, Box, Tab, Tabs } from "@mui/material";
-
-interface menuItemsType {
-  name: string;
-  path: string;
-  id: number;
-}
+import { menuItemsType } from "@/types/types";
+import { styled, Box, Tabs } from "@mui/material";
+import MenuTab from "./tab";
 
 const InternalBox = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-});
-
-const CustomTab = styled(Tab)({
-  fontSize: 18,
 });
 
 const Menu = () => {
@@ -46,9 +38,10 @@ const Menu = () => {
         <Tabs value={id}>
           {menuItems.map((item: menuItemsType, index: number) => {
             return (
-              <CustomTab
-                label={item.name}
+              <MenuTab
                 key={index}
+                item={item}
+                label={item.name}
                 onClick={() => menuClick(item)}
               />
             );
