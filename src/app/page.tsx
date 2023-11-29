@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
-import { searchText } from "@/recoil/atom";
+import { searchText, patch, champion } from "@/recoil/atom";
 import Search from "@/components/search/search";
 import { styled } from "@mui/material";
 
@@ -17,22 +17,32 @@ const Home = () => {
   const router = useRouter();
 
   const [text, setText] = useRecoilState(searchText);
-  // const [champData, setChampData] = useState(null);
+  const [patchVersion, setPatchVersion] = useRecoilState(patch);
+  const [champData, setChampData] = useRecoilState(champion);
 
-  // useEffect(() => {
-  //   try {
-  //     const getChampData = async () => {
-  //       const res = await axios.get(
-  //         "https://ddragon.leagueoflegends.com/cdn/13.23.1/data/ko_KR/champion.json",
-  //       );
-  //       setChampData(res.data);
-  //       console.log(champData);
-  //     };
-  //     getChampData();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, [champData]);
+  useEffect(() => {
+    const latestPatchVersion = async () => {
+      const res = await fetch(
+        "https://ddragon.leagueoflegends.com/api/versions.json",
+      );
+      const data = await res.json();
+      setPatchVersion(data[0]);
+    };
+    latestPatchVersion();
+  }, [setPatchVersion]);
+
+  useEffect(() => {
+    const getChampData = async () => {
+      const res = await fetch(
+        `https://ddragon.leagueoflegends.com/cdn/${patchVersion}/data/ko_KR/champion.json`,
+      );
+      const data = await res.json();
+      setChampData(data.data);
+    };
+    getChampData();
+  }, [patchVersion, setChampData]);
+  console.log(patchVersion);
+  console.log(champData);
 
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);

@@ -14,3 +14,15 @@ export const searchText = atom({
   key: "searchText",
   default: "",
 });
+
+export const patch = atom({
+  key: "patch",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const champion = atom({
+  key: "champion",
+  default: {},
+  effects_UNSTABLE: [persistAtom],
+});
