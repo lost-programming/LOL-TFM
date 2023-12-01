@@ -14,20 +14,34 @@ interface ListProps {
   name: string;
 }
 
+const CardContainer = styled(Card)({
+  display: "flex",
+  maxWidth: 175,
+  height: 150,
+});
+
 const CardImage = styled(CardMedia)({
-  sx = { width: 175, height: 175 },
+  margin: 6,
+});
+
+const CardName = styled(Typography)({
+  textAlign: "center",
+  fontSize: 12,
+  maxWidth: 100,
 });
 
 const List = ({ image, name }: ListProps) => {
   return (
-    <Card sx={{ maxwidth: 175 }}>
-      <CardImage image={image} title={name} />
+    <CardContainer sx={{ maxwidth: 175 }}>
+      <CardImage
+        image={`https://ddragon.leagueoflegends.com/cdn/13.23.1/img/champion/${image}`}
+        title={name}
+        sx={{ width: 75, height: 75 }}
+      />
       <CardContent>
-        <Typography variant="h5" component="div">
-          {name}
-        </Typography>
+        <CardName>{name}</CardName>
       </CardContent>
-    </Card>
+    </CardContainer>
   );
 };
 

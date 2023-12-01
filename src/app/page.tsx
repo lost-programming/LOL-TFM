@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { searchText, patch, champion } from "@/recoil/atom";
 import Search from "@/components/search/search";
 import { styled } from "@mui/material";
@@ -18,7 +18,7 @@ const Home = () => {
 
   const [text, setText] = useRecoilState(searchText);
   const [patchVersion, setPatchVersion] = useRecoilState(patch);
-  const [champData, setChampData] = useRecoilState(champion);
+  const setChampData = useSetRecoilState(champion);
 
   useEffect(() => {
     const latestPatchVersion = async () => {
@@ -37,17 +37,13 @@ const Home = () => {
         `https://ddragon.leagueoflegends.com/cdn/${patchVersion}/data/ko_KR/champion.json`,
       );
       const data = await res.json();
-      setChampData(data.data);
+      const sortbyChampionName = Object.values(data.data).sort(
+        (a: any, b: any) => (a.name > b.name ? 1 : -1),
+      );
+      setChampData(sortbyChampionName);
     };
     getChampData();
   }, [patchVersion, setChampData]);
-
-  useEffect(() => {
-    const sortChampData = [...champData].sort((a, b) =>
-      a.name.localeCompare(b.name),
-    );
-    setChampData(sortChampData);
-  }, [champData, setChampData]);
 
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
