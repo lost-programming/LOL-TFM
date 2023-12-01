@@ -12,6 +12,7 @@ const InternalBox = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  sx = { borderBottom: 1, borderColor: "divider" },
 });
 
 const Menu = () => {
@@ -34,7 +35,7 @@ const Menu = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <InternalBox sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <InternalBox>
         <Tabs value={id}>
           {menuItems.map((item: menuItemsType, index: number) => {
             return (

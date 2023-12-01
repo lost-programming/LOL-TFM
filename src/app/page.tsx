@@ -41,8 +41,13 @@ const Home = () => {
     };
     getChampData();
   }, [patchVersion, setChampData]);
-  console.log(patchVersion);
-  console.log(champData);
+
+  useEffect(() => {
+    const sortChampData = [...champData].sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+    setChampData(sortChampData);
+  }, [champData, setChampData]);
 
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);

@@ -21,6 +21,7 @@ const SearchContainer = styled(Paper)({
 const SearchInput = styled(InputBase)({
   width: 400,
   padding: 7,
+  sx = { ml: 1, flex: 1 },
 });
 
 const CustomSearchIcon = styled(SearchIcon)({
@@ -44,7 +45,6 @@ const Search = ({
         value={text}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        sx={{ ml: 1, flex: 1 }}
       />
       <CustomSearchIcon onClick={onClick} />
     </SearchContainer>
