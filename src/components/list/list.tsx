@@ -1,21 +1,16 @@
 "use client";
 
 import React from "react";
-import {
-  styled,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { styled, CardMedia, Typography } from "@mui/material";
 
 interface ListProps {
   image: string;
   name: string;
 }
 
-const CardContainer = styled(Card)({
+const CardList = styled("li")({
   display: "flex",
+  listStyle: "none",
   maxWidth: 175,
   height: 150,
 });
@@ -25,23 +20,24 @@ const CardImage = styled(CardMedia)({
 });
 
 const CardName = styled(Typography)({
-  textAlign: "center",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
   fontSize: 12,
   maxWidth: 100,
 });
 
 const List = ({ image, name }: ListProps) => {
   return (
-    <CardContainer sx={{ maxwidth: 175 }}>
+    <CardList sx={{ maxwidth: 175 }}>
       <CardImage
         image={`https://ddragon.leagueoflegends.com/cdn/13.23.1/img/champion/${image}`}
         title={name}
-        sx={{ width: 75, height: 75 }}
-      />
-      <CardContent>
+        sx={{ width: 100, height: 100 }}
+      >
         <CardName>{name}</CardName>
-      </CardContent>
-    </CardContainer>
+      </CardImage>
+    </CardList>
   );
 };
 

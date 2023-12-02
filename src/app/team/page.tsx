@@ -5,13 +5,19 @@ import { useRecoilValue } from "recoil";
 import { champion } from "@/recoil/atom";
 import List from "@/components/list/list";
 import { championType } from "@/types/types";
-import { styled, Container, Box } from "@mui/material";
+import { styled, Container } from "@mui/material";
 
 const TeamContainer = styled(Container)({
   marginTop: 100,
 });
 
-const ChampionList = styled(Box)({});
+const ChampionList = styled("ul")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  height: 2000,
+});
 
 const Team = () => {
   const champInfo = useRecoilValue(champion);
