@@ -6,7 +6,6 @@ import { champion } from "@/recoil/atom";
 import List from "@/components/list/list";
 import { championType } from "@/types/types";
 import { styled, Container } from "@mui/material";
-// import Search from "@/components/search/search";
 
 const TeamContainer = styled(Container)({
   display: "flex",
