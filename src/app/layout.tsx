@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ background: "#F3F5F5" }}>
         <RecoilRootWrapper>
           <Menu />
           {children}

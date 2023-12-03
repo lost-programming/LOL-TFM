@@ -64,6 +64,7 @@ const Home = () => {
   return (
     <MainContainer>
       <Search
+        autoFocus={true}
         placeholder="챔피언 검색"
         text={text}
         onChange={textChange}

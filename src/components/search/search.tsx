@@ -5,6 +5,7 @@ import { InputBase, Paper, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
 interface SearchProps {
+  autoFocus: boolean;
   placeholder: string;
   text: string;
   onChange: React.ChangeEventHandler;
@@ -29,6 +30,7 @@ const CustomSearchIcon = styled(SearchIcon)({
 });
 
 const Search = ({
+  autoFocus,
   placeholder,
   text,
   onChange,
@@ -38,9 +40,9 @@ const Search = ({
   return (
     <SearchContainer>
       <SearchInput
-        autoFocus={true}
-        placeholder={placeholder}
         type="search"
+        autoFocus={autoFocus}
+        placeholder={placeholder}
         value={text}
         onChange={onChange}
         onKeyDown={onKeyDown}

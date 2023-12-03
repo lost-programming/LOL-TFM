@@ -6,24 +6,30 @@ import { champion } from "@/recoil/atom";
 import List from "@/components/list/list";
 import { championType } from "@/types/types";
 import { styled, Container } from "@mui/material";
+// import Search from "@/components/search/search";
 
 const TeamContainer = styled(Container)({
-  marginTop: 100,
-});
-
-const ChampionList = styled("ul")({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  marginTop: 100,
+  background: "#FFFFFF",
+});
+
+const ChampionList = styled("ul")({
+  display: "block",
   flexWrap: "wrap",
-  height: 2000,
 });
 
 const Team = () => {
   const champInfo = useRecoilValue(champion);
   console.log(champInfo);
   return (
-    <TeamContainer fixed maxWidth="xl">
+    <TeamContainer
+      fixed
+      maxWidth="xl"
+      sx={{ border: 1.5, borderColor: "#E9ECEF" }}
+    >
       <ChampionList>
         {champInfo.map((champ: championType, index: number) => {
           return (
