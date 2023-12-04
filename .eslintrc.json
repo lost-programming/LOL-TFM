@@ -27,7 +27,8 @@
     "next/core-web-vitals",
     "plugin:import/recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/jsx-runtime"
   ],
   "rules": {
     "indent": ["error", 2],

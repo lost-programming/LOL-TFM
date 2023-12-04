@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { searchText, patch, champion } from "@/recoil/atom";
 import Search from "@/components/search/search";
+import { champion, patch, searchText } from "@/recoil/atom";
 import { styled } from "@mui/material";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 const MainContainer = styled("div")({
   display: "flex",

@@ -1,7 +1,7 @@
-import React from "react";
-import { Inter } from "next/font/google";
-import RecoilRootWrapper from "./recoilRootWrapper";
 import Menu from "@/components/menu/menu";
+import { Inter } from "next/font/google";
+import React from "react";
+import RecoilRootWrapper from "./recoilRootWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 

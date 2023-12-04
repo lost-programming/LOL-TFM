@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { useRouter } from "next/navigation";
-import { useRecoilState } from "recoil";
 import { menuId } from "@/recoil/atom";
 import { menuItemsType } from "@/types/types";
-import { styled, Box, Tabs } from "@mui/material";
+import { Box, Tabs, styled } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
 import MenuTab from "./tab";
 
 const InternalBox = styled(Box)({

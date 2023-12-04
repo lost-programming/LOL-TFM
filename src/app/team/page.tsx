@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { champion } from "@/recoil/atom";
 import List from "@/components/list/list";
+import { champion } from "@/recoil/atom";
 import { championType } from "@/types/types";
-import { styled, Container } from "@mui/material";
+import { Container, styled } from "@mui/material";
+import { useRecoilValue } from "recoil";
 
 const TeamContainer = styled(Container)({
   display: "flex",

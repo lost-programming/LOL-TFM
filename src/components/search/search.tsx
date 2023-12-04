@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { InputBase, Paper, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { InputBase, Paper, styled } from "@mui/material";
 
 interface SearchProps {
   autoFocus: boolean;

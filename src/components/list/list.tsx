@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { styled, CardMedia } from "@mui/material";
+import { CardMedia, styled } from "@mui/material";
 
 interface ListProps {
   image: string;

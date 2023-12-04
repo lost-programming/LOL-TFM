@@ -1,4 +1,3 @@
-import React from "react";
 import { menuItemsType } from "@/types/types";
 import { styled, Tab } from "@mui/material";
 
