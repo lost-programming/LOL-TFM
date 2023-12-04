@@ -1,4 +1,3 @@
-
 const Ranking = () => {
   return <></>;
 };
