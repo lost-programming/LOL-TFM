@@ -15,6 +15,11 @@ export const searchText = atom({
   default: "",
 });
 
+export const searchChampion = atom({
+  key: "searchChampion",
+  default: "",
+});
+
 export const patch = atom({
   key: "patch",
   default: "",

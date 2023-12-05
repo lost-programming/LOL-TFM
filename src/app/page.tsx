@@ -67,6 +67,8 @@ const Home = () => {
         autoFocus={true}
         placeholder="챔피언 검색"
         text={text}
+        width={400}
+        showIcon={true}
         onChange={textChange}
         onKeyDown={searchEnter}
         onClick={searchClick}

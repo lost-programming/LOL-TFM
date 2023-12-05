@@ -1,12 +1,22 @@
 "use client";
 
 import List from "@/components/list/list";
-import { champion } from "@/recoil/atom";
+import Position from "@/components/position/position";
+import Search from "@/components/search/search";
+import { champion, searchChampion } from "@/recoil/atom";
 import { championType } from "@/types/types";
 import { Container, styled } from "@mui/material";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-const TeamContainer = styled(Container)({
+// const TeamContainer = styled(Container)({
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+//   marginTop: 100,
+//   background: "#FFFFFF",
+// });
+
+const ChampionContainer = styled(Container)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -21,13 +31,29 @@ const ChampionList = styled("ul")({
 
 const Team = () => {
   const champInfo = useRecoilValue(champion);
-  console.log(champInfo);
+  const [text, setText] = useRecoilState(searchChampion);
+
+  const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
+
   return (
-    <TeamContainer
+    <ChampionContainer
       fixed
       maxWidth="xl"
       sx={{ border: 1.5, borderColor: "#E9ECEF" }}
     >
+      <div>
+        <Position width={25} height={25} />
+        <Search
+          autoFocus={false}
+          placeholder="챔피언 검색"
+          text={text}
+          width={200}
+          showIcon={false}
+          onChange={textChange}
+        />
+      </div>
       <ChampionList>
         {champInfo.map((champ: championType, index: number) => {
           return (
@@ -35,7 +61,7 @@ const Team = () => {
           );
         })}
       </ChampionList>
-    </TeamContainer>
+    </ChampionContainer>
   );
 };
 

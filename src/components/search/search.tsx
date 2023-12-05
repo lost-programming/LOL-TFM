@@ -7,9 +7,11 @@ interface SearchProps {
   autoFocus: boolean;
   placeholder: string;
   text: string;
+  width: number;
+  showIcon: boolean;
   onChange: React.ChangeEventHandler;
-  onKeyDown: React.KeyboardEventHandler;
-  onClick: React.MouseEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  onClick?: React.MouseEventHandler;
 }
 
 const SearchContainer = styled(Paper)({
@@ -19,7 +21,6 @@ const SearchContainer = styled(Paper)({
 });
 
 const SearchInput = styled(InputBase)({
-  width: 400,
   padding: 7,
 });
 
@@ -32,6 +33,8 @@ const Search = ({
   autoFocus,
   placeholder,
   text,
+  width,
+  showIcon,
   onChange,
   onKeyDown,
   onClick,
@@ -45,9 +48,9 @@ const Search = ({
         value={text}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, width: {width} }}
       />
-      <CustomSearchIcon onClick={onClick} />
+      {showIcon && <CustomSearchIcon onClick={onClick} />}
     </SearchContainer>
   );
 };
