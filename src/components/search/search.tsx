@@ -48,7 +48,7 @@ const Search = ({
         value={text}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        sx={{ ml: 1, flex: 1, width: {width} }}
+        sx={{ ml: 1, flex: 1, width: { width } }}
       />
       {showIcon && <CustomSearchIcon onClick={onClick} />}
     </SearchContainer>

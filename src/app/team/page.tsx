@@ -17,9 +17,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 // });
 
 const ChampionContainer = styled(Container)({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: "block",
   marginTop: 100,
   background: "#FFFFFF",
 });
