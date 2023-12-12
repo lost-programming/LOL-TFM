@@ -3,10 +3,12 @@
 import List from "@/components/list/list";
 import Position from "@/components/position/position";
 import Search from "@/components/search/search";
-import { champion, searchChampion } from "@/recoil/atom";
+import { useDebounce } from "@/hooks/hooks";
+import { champion, filteredChampion, searchChampion } from "@/recoil/atom";
 import { championType } from "@/types/types";
 import { Container, styled } from "@mui/material";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useEffect } from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 // const TeamContainer = styled(Container)({
 //   display: "flex",
@@ -28,13 +30,23 @@ const ChampionList = styled("ul")({
 });
 
 const Team = () => {
-  const champInfo = useRecoilValue(champion);
+  const champInfo = useRecoilValue(filteredChampion);
   const [text, setText] = useRecoilState(searchChampion);
+  const debounceSearch = useDebounce(text, 500);
+  const champData = useRecoilValue(champion);
+  const setFilterChamp = useSetRecoilState(filteredChampion);
 
   const textChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
+  useEffect(() => {
+    const filteredData = champData.filter((champion: championType) => 
+      champion.name.replace(/(\s*)/g, "").includes(debounceSearch));
+    
+    return setFilterChamp(filteredData.length >= 1 ? filteredData : champData);
+  }, [setFilterChamp, debounceSearch]);
+  
   return (
     <ChampionContainer
       fixed

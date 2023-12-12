@@ -31,3 +31,8 @@ export const champion = atom({
   default: {},
   effects_UNSTABLE: [persistAtom],
 });
+
+export const filteredChampion = atom({
+  key: "filteredChampion",
+  default: champion,
+});
