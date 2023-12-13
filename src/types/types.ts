@@ -51,3 +51,8 @@ export interface championType {
   title: string;
   version: string;
 }
+export interface PositionType {
+  name: string;
+  image: string;
+  id: number;
+}
