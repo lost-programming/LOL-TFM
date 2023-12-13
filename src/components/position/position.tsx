@@ -13,7 +13,7 @@ interface PositionType {
 
 const Position = ({ width, height }: PositionProps) => {
   const positionList: PositionType[] = [
-    { name: "전체", image: "", id: 0 },
+    // { name: "전체", image: "", id: 0 },
     { name: "탑", image: "/images/Position_Top.png", id: 1 },
     { name: "정글", image: "/images/Position_Jungle.png", id: 2 },
     { name: "미드", image: "/images/Position_Mid.png", id: 3 },

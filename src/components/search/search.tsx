@@ -40,7 +40,7 @@ const Search = ({
   onClick,
 }: SearchProps) => {
   return (
-    <SearchContainer>
+    <SearchContainer elevation={2} sx={{ width: { width } }}>
       <SearchInput
         type="search"
         autoFocus={autoFocus}
@@ -48,7 +48,7 @@ const Search = ({
         value={text}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        sx={{ ml: 1, flex: 1, width: { width } }}
+        sx={{ ml: 1, flex: 1 }}
       />
       {showIcon && <CustomSearchIcon onClick={onClick} />}
     </SearchContainer>

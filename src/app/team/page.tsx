@@ -6,7 +6,7 @@ import Search from "@/components/search/search";
 import { useDebounce } from "@/hooks/hooks";
 import { champion, filteredChampion, searchChampion } from "@/recoil/atom";
 import { championType } from "@/types/types";
-import { Container, styled } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
@@ -18,15 +18,23 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 //   background: "#FFFFFF",
 // });
 
-const ChampionContainer = styled(Container)({
+const ListContainer = styled(Container)({
   display: "block",
   marginTop: 100,
   background: "#FFFFFF",
 });
 
-const ChampionList = styled("ul")({
+const ListHeader = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  padding: 10,
+});
+
+const ListBody = styled("ul")({
   display: "block",
-  flexWrap: "wrap",
+  textAlign: "center",
+  listStyle: "none",
+  paddingInlineStart: 0,
 });
 
 const Team = () => {
@@ -41,37 +49,38 @@ const Team = () => {
   };
 
   useEffect(() => {
-    const filteredData = champData.filter((champion: championType) => 
-      champion.name.replace(/(\s*)/g, "").includes(debounceSearch));
-    
+    const filteredData = champData.filter((champion: championType) =>
+      champion.name.replace(/(\s*)/g, "").includes(debounceSearch),
+    );
+
     return setFilterChamp(filteredData.length >= 1 ? filteredData : champData);
   }, [setFilterChamp, debounceSearch]);
-  
+
   return (
-    <ChampionContainer
+    <ListContainer
       fixed
       maxWidth="xl"
       sx={{ border: 1.5, borderColor: "#E9ECEF" }}
     >
-      <div>
+      <ListHeader>
         <Position width={25} height={25} />
         <Search
           autoFocus={false}
           placeholder="챔피언 검색"
           text={text}
-          width={200}
+          width={400}
           showIcon={false}
           onChange={textChange}
         />
-      </div>
-      <ChampionList>
+      </ListHeader>
+      <ListBody>
         {champInfo.map((champ: championType, index: number) => {
           return (
             <List key={index} image={champ.image.full} name={champ.name} />
           );
         })}
-      </ChampionList>
-    </ChampionContainer>
+      </ListBody>
+    </ListContainer>
   );
 };
 
